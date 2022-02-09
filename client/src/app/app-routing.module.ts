@@ -3,6 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: '',
+    loadChildren: () =>
+      import('./pages/withNavBar/nav-bar.module').then((m) => m.NavBarModule),
+  },
+  {
     path: 'login',
     loadChildren: () =>
       import('./pages/withoutNavBar/login/login.module').then(

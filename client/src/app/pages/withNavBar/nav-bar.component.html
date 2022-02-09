@@ -1,0 +1,49 @@
+<mat-toolbar class="mat-elevation-z8"  color = "primary">
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened">
+            menu
+        </mat-icon>
+        <mat-icon *ngIf="sidenav.opened">
+            close
+        </mat-icon>
+    </button>
+  Cook
+</mat-toolbar>
+
+<mat-sidenav-container >
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8"   >
+
+        <img class="avatar mat-elevation-z8" src="data:image/png;base64,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" />
+
+        <h4 class="name">Eduard Metzler</h4>
+        <!-- <p class="designation">Software Engineer</p> -->
+
+        <mat-divider></mat-divider>
+
+        <button mat-button class="menu-button">
+            <mat-icon>home</mat-icon>
+            <span>Home</span>
+        </button>
+        <button mat-button class="menu-button">
+            <mat-icon>person</mat-icon>
+            <span>Profile</span>
+        </button>
+        <button mat-button class="menu-button">
+            <mat-icon>info</mat-icon>
+            <span>About</span>
+        </button>
+
+        <mat-divider></mat-divider>
+
+        <button mat-button class="menu-button">
+            <mat-icon>help</mat-icon>
+            <span>Help</span>
+        </button>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content mat-elevation-z8">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
