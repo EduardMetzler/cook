@@ -1,0 +1,6 @@
+{
+    "port": 5000,
+    "jwtSecter": "123",
+    "mongoUri": "mongodb+srv://eduard:eduard@cluster0-nc835.azure.mongodb.net/app?retryWrites=true&w=majority"
+  }
+  
