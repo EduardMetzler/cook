@@ -30,13 +30,10 @@ router.post(
         });
       }
 
-      const {
-        firstName,
-        lastName,
-        email,
-        password,
-        repeatedPassword,
-      } = req.body;
+      const { firstName, lastName, email, password, repeatedPassword } =
+        req.body;
+    
+        
 
       const candidate = await User.findOne({ email });
 
@@ -55,12 +52,12 @@ router.post(
       const user = new User({
         email,
         password: hashedPassword,
-        firstName,
-        lastName,
+        persone: { firstName, lastName },
       });
       const token = jwt.sign({ userId: user.id }, config.get("jwtSecter"), {
         expiresIn: "1h",
       });
+  
 
       await user.save();
 
@@ -87,7 +84,6 @@ router.post(
         });
       }
       const { email, password } = req.body;
-      console.log(req.body);
       const user = await User.findOne({ email });
 
       if (!user) {

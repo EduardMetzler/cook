@@ -11,6 +11,8 @@ app.use(cors());
 mongoose.set("useFindAndModify", false);
 
 app.use("/api", require("./routes/auth.routes"));
+app.use("/api/user", require("./routes/user.routes"));
+
 
 const PORT = config.get("port") || 5000;
 

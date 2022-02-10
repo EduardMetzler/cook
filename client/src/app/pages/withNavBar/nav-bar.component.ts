@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { UserDataService } from 'src/app/services/user-data.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,7 +8,11 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./nav-bar.component.css'],
 })
 export class NavBarComponent implements OnInit {
-  constructor() {}
+  constructor(private userDataService: UserDataService) {}
 
-  ngOnInit(): void {}
+  user$ = this.userDataService.user$;
+
+  ngOnInit(): void {
+    this.userDataService.getUserData();
+  }
 }
