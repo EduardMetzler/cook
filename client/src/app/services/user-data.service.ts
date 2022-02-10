@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class UserDataService {
-  user$ = new BehaviorSubject<any>({});
+  user$ = new BehaviorSubject<any>(null);
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -21,5 +21,9 @@ export class UserDataService {
         console.log(e.error.message);
       },
     });
+  }
+
+  deleteUserData() {
+    this.user$.next(null);
   }
 }
