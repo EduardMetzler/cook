@@ -1,0 +1,5 @@
+<div *ngIf="user$|async as user"> 
+    <app-user-dashboard *ngIf="user.role==='user'"></app-user-dashboard>
+    <app-admin-dashboard  *ngIf="user.role==='admin'"></app-admin-dashboard>
+
+</div>

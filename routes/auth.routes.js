@@ -53,6 +53,7 @@ router.post(
         email,
         password: hashedPassword,
         persone: { firstName, lastName },
+        role:"user"
       });
       const token = jwt.sign({ userId: user.id }, config.get("jwtSecter"), {
         expiresIn: "1h",

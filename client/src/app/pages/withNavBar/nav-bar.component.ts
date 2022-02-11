@@ -32,4 +32,7 @@ export class NavBarComponent implements OnInit {
   toRegister() {
     this.router.navigate(['register']);
   }
+  toDashboard() {
+    this.router.navigate(['dashboard']);
+  }
 }

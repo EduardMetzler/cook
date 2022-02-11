@@ -11,7 +11,7 @@ router.get("/get-user-data", auth, async (req, res) => {
     const user = await User.find({ _id: req.user.userId });
 
 
-    res.json({persone:user[0].persone  });
+    res.json({persone:user[0].persone,role:user[0].role  });
   } catch (e) {
     res.status(500).json({ message: "Ein Feler ist aufgetreten" });
   }
