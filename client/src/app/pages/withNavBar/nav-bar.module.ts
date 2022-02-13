@@ -12,6 +12,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboard.component';
 import { AdminDashboardComponent } from './dashboard/admin-dashboard/admin-dashboard.component';
 import { RecipeCreateComponent } from './recipe-create/recipe-create.component';
+import { MyRecipesComponent } from './my-recipes/my-recipes.component';
+import { RecipeComponent } from './recipe/recipe.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { RecipeCreateComponent } from './recipe-create/recipe-create.component';
     UserDashboardComponent,
     AdminDashboardComponent,
     RecipeCreateComponent,
+    MyRecipesComponent,
+    RecipeComponent,
   ],
 
   imports: [

@@ -5,6 +5,7 @@ const schema = new Schema({
 
   name: { type: String, required: true, unique: false },
   description: { type: String, required: true,unique: false },
+
 });
 
 module.exports = model("Recipe0", schema);

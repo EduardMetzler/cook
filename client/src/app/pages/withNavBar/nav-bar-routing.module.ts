@@ -6,6 +6,8 @@ import { NavBarComponent } from './nav-bar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NoAuthGuardService } from 'src/app/guards/no-auth-guard.service';
 import { RecipeCreateComponent } from './recipe-create/recipe-create.component';
+import { MyRecipesComponent } from './my-recipes/my-recipes.component';
+import { RecipeComponent } from './recipe/recipe.component';
 
 const routes: Routes = [
   {
@@ -31,6 +33,15 @@ const routes: Routes = [
         path: 'pecipe-create',
         component: RecipeCreateComponent,
         canActivate: [NoAuthGuardService],
+      },
+      {
+        path: 'my-pecipes',
+        component: MyRecipesComponent,
+        canActivate: [NoAuthGuardService],
+      },
+      {
+        path: 'recipe/:id',
+        component: RecipeComponent,
       },
     ],
   },

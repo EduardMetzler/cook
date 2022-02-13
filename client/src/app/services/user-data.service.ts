@@ -10,6 +10,8 @@ import { environment } from '../../environments/environment';
 export class UserDataService {
   user$ = new BehaviorSubject<any>(null);
 
+  oneRecipe$ = new BehaviorSubject<any>(null);
+
   constructor(private http: HttpClient, private router: Router) {}
 
   getUserData() {
@@ -33,6 +35,19 @@ export class UserDataService {
       .post<any>(`${environment.baseAPI}/user/new-recipe-create`, form)
       .subscribe({
         next: (result: any) => {},
+        error: (e) => {
+          console.log(e.error.message);
+        },
+      });
+  }
+
+  getOneRecipe(id: any) {
+    this.http
+      .get<any>(`${environment.baseAPI}/user/one-recipe/${id}`)
+      .subscribe({
+        next: (result: any) => {
+          this.oneRecipe$.next(result);
+        },
         error: (e) => {
           console.log(e.error.message);
         },

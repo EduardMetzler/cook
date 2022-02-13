@@ -10,6 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 const MaterialComponents = [
   MatInputModule,
@@ -23,6 +24,7 @@ const MaterialComponents = [
   MatRadioModule,
   MatDividerModule,
   MatIconModule,
+  MatListModule,
 ];
 
 @NgModule({
