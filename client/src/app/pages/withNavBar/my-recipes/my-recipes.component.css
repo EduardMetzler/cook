@@ -1,4 +1,8 @@
-mat-list-item:hover {
+.list:hover {
   background-color: rgb(204, 204, 204) !important;
   cursor: pointer;
+}
+
+button {
+  margin-right: 10px;
 }
