@@ -34,7 +34,9 @@ export class UserDataService {
     this.http
       .post<any>(`${environment.baseAPI}/user/new-recipe-create`, form)
       .subscribe({
-        next: (result: any) => {},
+        next: (result: any) => {
+          this.getUserData();
+        },
         error: (e) => {
           console.log(e.error.message);
         },
@@ -47,6 +49,20 @@ export class UserDataService {
       .subscribe({
         next: (result: any) => {
           this.oneRecipe$.next(result);
+        },
+        error: (e) => {
+          console.log(e.error.message);
+        },
+      });
+  }
+
+  oneRecipeDelete(id: any) {
+    this.http
+      .delete<any>(`${environment.baseAPI}/user/one-recipe-delete/${id}`)
+      .subscribe({
+        next: (result: any) => {
+          this.getUserData();
+          console.log(result);
         },
         error: (e) => {
           console.log(e.error.message);

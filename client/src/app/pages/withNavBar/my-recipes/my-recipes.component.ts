@@ -12,4 +12,8 @@ export class MyRecipesComponent implements OnInit {
   user$ = this.userDataService.user$;
 
   ngOnInit(): void {}
+
+  recipeDelete(id: any) {
+    this.userDataService.oneRecipeDelete(id);
+  }
 }
