@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboard.component';
 import { AdminDashboardComponent } from './dashboard/admin-dashboard/admin-dashboard.component';
+import { RecipeCreateComponent } from './recipe-create/recipe-create.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AdminDashboardComponent } from './dashboard/admin-dashboard/admin-dashb
     DashboardComponent,
     UserDashboardComponent,
     AdminDashboardComponent,
+    RecipeCreateComponent,
   ],
 
   imports: [

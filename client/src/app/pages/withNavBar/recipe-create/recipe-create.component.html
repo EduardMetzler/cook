@@ -1,0 +1,19 @@
+<div fxLayoutAlign="center " class="maim-div"  >
+  <mat-card fxFlex="100" fxFlex.gt-xs="50">
+    <form fxLayout="column" class="form" [formGroup]="form"  (ngSubmit)="newRecipeCreate()">
+      <mat-form-field>
+        <input matInput placeholder="Name" formControlName="name" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea
+          matInput
+          placeholder="Description"
+          formControlName="description"
+        >
+        </textarea>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+  </mat-card>
+</div>

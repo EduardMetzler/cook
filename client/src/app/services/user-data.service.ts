@@ -26,4 +26,16 @@ export class UserDataService {
   deleteUserData() {
     this.user$.next(null);
   }
+
+  sendNewRecipe(form: any) {
+    console.log(form);
+    this.http
+      .post<any>(`${environment.baseAPI}/user/new-recipe-create`, form)
+      .subscribe({
+        next: (result: any) => {},
+        error: (e) => {
+          console.log(e.error.message);
+        },
+      });
+  }
 }
