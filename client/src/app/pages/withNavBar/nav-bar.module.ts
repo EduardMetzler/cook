@@ -14,6 +14,7 @@ import { AdminDashboardComponent } from './dashboard/admin-dashboard/admin-dashb
 import { RecipeCreateComponent } from './recipe-create/recipe-create.component';
 import { MyRecipesComponent } from './my-recipes/my-recipes.component';
 import { RecipeComponent } from './recipe/recipe.component';
+import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { RecipeComponent } from './recipe/recipe.component';
     RecipeCreateComponent,
     MyRecipesComponent,
     RecipeComponent,
+    RecipeEditComponent,
   ],
 
   imports: [

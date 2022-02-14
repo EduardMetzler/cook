@@ -74,4 +74,27 @@ router.delete("/one-recipe-delete/:id", auth, async (req, res) => {
   }
 });
 
+router.put("/one-recipe-update/:id", auth, async (req, res) => {
+  try {
+    const { name, description } = req.body;
+
+    const recipe = await Recipe0.findById(req.params.id);
+
+    recipe.name = name;
+    recipe.description = description;
+
+    console.log(recipe);
+
+    Recipe0.findByIdAndUpdate(req.params.id, recipe, function (err, docs) {
+      if (err) {
+        console.log(err);
+      } else {
+      }
+    });
+    res.json({ message: "Updated" });
+  } catch (e) {
+    res.status(500).json({ message: "Ein Feler ist aufgetreten" });
+  }
+});
+
 module.exports = router;

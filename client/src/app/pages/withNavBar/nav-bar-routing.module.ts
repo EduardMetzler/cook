@@ -8,6 +8,7 @@ import { NoAuthGuardService } from 'src/app/guards/no-auth-guard.service';
 import { RecipeCreateComponent } from './recipe-create/recipe-create.component';
 import { MyRecipesComponent } from './my-recipes/my-recipes.component';
 import { RecipeComponent } from './recipe/recipe.component';
+import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,11 @@ const routes: Routes = [
       {
         path: 'recipe/:id',
         component: RecipeComponent,
+        canActivate: [NoAuthGuardService],
+      },
+      {
+        path: 'recipe-edit/:id',
+        component: RecipeEditComponent,
         canActivate: [NoAuthGuardService],
       },
     ],

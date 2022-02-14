@@ -1,9 +1,10 @@
-<div *ngIf="user$ | async as user">
-  <mat-list role="list" *ngFor="let recipe of user.recipesArray">
+<div *ngIf="user$ | async as user"  >
+  <div fxLayout="column" fxLayoutAlign=" center center" ><h1 class="title">My Recipes</h1></div>
+  <mat-list  *ngFor="let recipe of user.recipesArray">
     <div class="list"   fxLayout="row" fxLayoutAlign=" center">
 
         <mat-list-item  [routerLink]="['/recipe', recipe._id]">{{ recipe.name }}</mat-list-item>
-        <button mat-raised-button color="accent">edit</button>
+        <button mat-raised-button color="accent"  [routerLink]="['/recipe-edit', recipe._id]">edit</button>
 
         <button mat-raised-button color="warn" (click)="recipeDelete(recipe._id)">delete</button>
 

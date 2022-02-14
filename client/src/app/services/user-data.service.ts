@@ -73,4 +73,17 @@ export class UserDataService {
         },
       });
   }
+
+  recipeEdit(form: any, id: any) {
+    this.http
+      .put<any>(`${environment.baseAPI}/user/one-recipe-update/${id}`, form)
+      .subscribe({
+        next: (result: any) => {
+          this.getUserData();
+        },
+        error: (e) => {
+          console.log(e.error.message);
+        },
+      });
+  }
 }
