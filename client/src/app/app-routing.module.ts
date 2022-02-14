@@ -21,6 +21,11 @@ const routes: Routes = [
         (m) => m.RegisterModule
       ),
   },
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: 'home',
+  },
 ];
 
 @NgModule({

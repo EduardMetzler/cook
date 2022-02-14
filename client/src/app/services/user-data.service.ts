@@ -51,6 +51,10 @@ export class UserDataService {
           this.oneRecipe$.next(result);
         },
         error: (e) => {
+          if (e.error.message === 'Private') {
+            this.router.navigate(['home']);
+          }
+
           console.log(e.error.message);
         },
       });

@@ -39,35 +39,36 @@ router.post("/new-recipe-create", auth, async (req, res) => {
   }
 });
 
-router.get("/one-recipe/:id", async (req, res) => {
+router.get("/one-recipe/:id", auth, async (req, res) => {
   try {
     const recipe = await Recipe0.find({ _id: req.params.id });
 
-    res.json(recipe[0]);
+    if (recipe[0].ownerId == req.user.userId) {
+      res.json(recipe[0]);
+    } else {
+      res.status(500).json({ message: "Private" });
+    }
   } catch (e) {
     res.status(500).json({ message: "Ein Feler ist aufgetreten" });
   }
 });
 
-router.delete("/one-recipe-delete/:id", async (req, res) => {
+router.delete("/one-recipe-delete/:id", auth, async (req, res) => {
   try {
+    Recipe0.findOneAndRemove(
+      {
+        _id: req.params.id,
+      },
+      (err, book) => {
+        if (err) {
+          res.send("error removing");
+        } else {
+          res.status(204);
+        }
+      }
+    );
 
-
-
-    Recipe0.findOneAndRemove({
-      _id: req.params.id
-     }, (err, book) => {
-      if(err) {
-       res.send('error removing')
-      } else {
-
-       res.status(204);
-     }
-    })
-
-
-
-    res.json({ message: "deleted"  });
+    res.json({ message: "deleted" });
   } catch (e) {
     res.status(500).json({ message: "Ein Feler ist aufgetreten" });
   }

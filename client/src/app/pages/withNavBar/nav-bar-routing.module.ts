@@ -42,6 +42,7 @@ const routes: Routes = [
       {
         path: 'recipe/:id',
         component: RecipeComponent,
+        canActivate: [NoAuthGuardService],
       },
     ],
   },
