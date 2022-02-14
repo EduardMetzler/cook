@@ -11,7 +11,13 @@ export class RecipeCreateComponent implements OnInit {
   form = new FormGroup({
     name: new FormControl(null, [Validators.required]),
     description: new FormControl(null, [Validators.required]),
+    private: new FormControl(true, [Validators.required]),
   });
+
+  options = [
+    { lable: 'True', value: true },
+    { lable: 'False', value: false },
+  ];
   constructor(private userDataService: UserDataService) {}
 
   ngOnInit(): void {}

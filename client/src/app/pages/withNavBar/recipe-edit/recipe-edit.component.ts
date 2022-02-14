@@ -14,7 +14,12 @@ export class RecipeEditComponent implements OnInit {
   form = new FormGroup({
     name: new FormControl(null, [Validators.required]),
     description: new FormControl(null, [Validators.required]),
+    private: new FormControl('', [Validators.required]),
   });
+  options = [
+    { lable: 'True', value: true },
+    { lable: 'False', value: false },
+  ];
   constructor(
     private route: ActivatedRoute,
     private userDataService: UserDataService
@@ -30,6 +35,7 @@ export class RecipeEditComponent implements OnInit {
         this.form.patchValue({
           name: oneRecipe.name,
           description: oneRecipe.description,
+          private: true ? oneRecipe.private === 'true' : false,
         });
       }
     });

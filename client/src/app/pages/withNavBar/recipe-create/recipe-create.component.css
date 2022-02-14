@@ -10,3 +10,11 @@ mat-card {
 textarea {
   min-height: 200px;
 }
+
+mat-radio-group {
+  margin: 10px 0;
+}
+
+mat-radio-button {
+  margin: 5px;
+}

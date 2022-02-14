@@ -1,18 +1,24 @@
-<div fxLayoutAlign="center "   >
+<div fxLayoutAlign="center ">
   <mat-card fxFlex="100" fxFlex.gt-xs="50">
-    <form fxLayout="column" class="form" [formGroup]="form"  (ngSubmit)="newRecipeCreate()">
+    <form fxLayout="column" class="form" [formGroup]="form" (ngSubmit)="newRecipeCreate()">
       <mat-form-field>
         <input matInput placeholder="Name" formControlName="name" />
       </mat-form-field>
 
       <mat-form-field>
-        <textarea
-          matInput
-          placeholder="Description"
-          formControlName="description"
-        >
+        <textarea matInput placeholder="Description" formControlName="description">
         </textarea>
       </mat-form-field>
+  
+      <mat-radio-group  
+      formControlName="private">
+      <p>Private Pecipe ?</p>
+        <mat-radio-button  *ngFor="let option of options" [value]="option.value">
+          {{option.lable}}
+        </mat-radio-button>
+      </mat-radio-group>
+  
+
       <button mat-raised-button color="primary" type="submit">Submit</button>
     </form>
   </mat-card>

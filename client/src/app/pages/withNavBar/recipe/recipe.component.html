@@ -2,8 +2,11 @@
 <div fxLayoutAlign="center "  >
     <div class="maim-div" fxFlex="100" fxFlex.gt-xs="50" *ngIf="oneRecipe$ |async as oneRecipe">
     
-            <div>{{oneRecipe.name}}</div>
+ 
+            <h1 > {{oneRecipe.name}} </h1>
             <div>{{oneRecipe.description}}</div>
+            <div>Private: {{oneRecipe.private}}</div>
+
     
    
 
