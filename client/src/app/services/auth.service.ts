@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { UserDataService } from './user-data.service';
@@ -11,7 +12,8 @@ export class AuthServiceService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private userDataService: UserDataService
+    private userDataService: UserDataService,
+    private snacBar: MatSnackBar
   ) {}
 
   login(data: any) {
@@ -20,9 +22,11 @@ export class AuthServiceService {
         localStorage.setItem('token', result.token);
         this.router.navigate(['']);
         this.userDataService.getUserData();
+        this.openSnacBar(result.message);
       },
       error: (e) => {
         console.log(e.error.message);
+        this.openSnacBar(e.error.message);
       },
     });
   }
@@ -35,6 +39,7 @@ export class AuthServiceService {
       },
       error: (e) => {
         console.log(e.error.message);
+        this.openSnacBar(e.error.message);
       },
     });
   }
@@ -43,5 +48,9 @@ export class AuthServiceService {
     localStorage.removeItem('token');
     this.router.navigate(['']);
     this.userDataService.deleteUserData();
+  }
+
+  openSnacBar(message: any) {
+    this.snacBar.open(message);
   }
 }

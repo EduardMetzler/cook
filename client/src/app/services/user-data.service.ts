@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { environment } from '../../environments/environment';
@@ -12,7 +13,15 @@ export class UserDataService {
 
   oneRecipe$ = new BehaviorSubject<any>(null);
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private snacBar: MatSnackBar
+  ) {}
+
+  openSnacBar(message: any) {
+    this.snacBar.open(message);
+  }
 
   getUserData() {
     this.http.get<any>(`${environment.baseAPI}/user/get-user-data`).subscribe({
@@ -21,6 +30,7 @@ export class UserDataService {
       },
       error: (e) => {
         console.log(e.error.message);
+        this.openSnacBar(e.error.message);
       },
     });
   }
@@ -36,9 +46,11 @@ export class UserDataService {
       .subscribe({
         next: (result: any) => {
           this.getUserData();
+          this.openSnacBar(result.message);
         },
         error: (e) => {
           console.log(e.error.message);
+          this.openSnacBar(e.error.message);
         },
       });
   }
@@ -51,11 +63,12 @@ export class UserDataService {
           this.oneRecipe$.next(result);
         },
         error: (e) => {
-          if (e.error.message === 'Private') {
+          if (e.error.message === 'Recipe is private') {
             this.router.navigate(['home']);
           }
 
           console.log(e.error.message);
+          this.openSnacBar(e.error.message);
         },
       });
   }
@@ -67,9 +80,11 @@ export class UserDataService {
         next: (result: any) => {
           this.getUserData();
           console.log(result);
+          this.openSnacBar(result.message);
         },
         error: (e) => {
           console.log(e.error.message);
+          this.openSnacBar(e.error.message);
         },
       });
   }
@@ -80,9 +95,11 @@ export class UserDataService {
       .subscribe({
         next: (result: any) => {
           this.getUserData();
+          this.openSnacBar(result.message);
         },
         error: (e) => {
           console.log(e.error.message);
+          this.openSnacBar(e.error.message);
         },
       });
   }

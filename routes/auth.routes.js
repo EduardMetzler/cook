@@ -26,7 +26,7 @@ router.post(
       if (!errors.isEmpty()) {
         return res.status(400).json({
           errors: errors.array(),
-          message: "Registrierung ist fehlgeschlagen",
+          message: "Registration failed",
         });
       }
 
@@ -38,13 +38,13 @@ router.post(
       const candidate = await User.findOne({ email });
 
       if (candidate) {
-        return res.status(400).json({ message: "User bereits registriert" });
+        return res.status(400).json({ message: "User already registered" });
       }
 
       if (password !== repeatedPassword) {
         return res
           .status(400)
-          .json({ message: "Die Passwörter stimmen nicht überein" });
+          .json({ message: "The passwords do not match" });
       }
 
       const hashedPassword = await bcrypt.hash(password, 12);
@@ -62,9 +62,9 @@ router.post(
 
       await user.save();
 
-      res.status(201).json({ message: "User wurde registriert", token });
+      res.status(201).json({ message: "Registration is successful", token });
     } catch (e) {
-      res.status(500).json({ message: "Die Daten sind nicht korrekt" });
+      res.status(500).json({ message: "Error" });
     }
   }
 );
@@ -81,7 +81,7 @@ router.post(
       if (!errors.isEmpty()) {
         return res.status(400).json({
           errors: errors.array(),
-          message: "Falsche E-Mail oder Passwort",
+          message: "Wrong email or password",
         });
       }
       const { email, password } = req.body;
@@ -90,24 +90,24 @@ router.post(
       if (!user) {
         return res
           .status(400)
-          .json({ message: "Falsche E-Mail oder Passwort" });
+          .json({ message: "Wrong email or password" });
       }
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
         return res
           .status(400)
-          .json({ message: "Falsche E-Mail oder Passwort" });
+          .json({ message: "Wrong email or password" });
       }
       const token = jwt.sign({ userId: user.id }, config.get("jwtSecter"), {
         expiresIn: "1000d",
       });
 
       res.json({
-        token,
+        token,message:"Login is successful"
       });
     } catch (e) {
-      res.status(500).json({ message: "error" });
+      res.status(500).json({ message: "Error" });
     }
   }
 );

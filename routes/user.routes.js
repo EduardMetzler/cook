@@ -17,7 +17,7 @@ router.get("/get-user-data", auth, async (req, res) => {
       recipesArray: recipesArray,
     });
   } catch (e) {
-    res.status(500).json({ message: "Ein Feler ist aufgetreten" });
+    res.status(500).json({ message: "Error" });
   }
 });
 
@@ -34,9 +34,9 @@ router.post("/new-recipe-create", auth, async (req, res) => {
 
     await recipe.save();
 
-    res.json({ message: "ok" });
+    res.json({ message: "Created" });
   } catch (e) {
-    res.status(500).json({ message: "Ein Feler ist aufgetreten" });
+    res.status(500).json({ message: "Error" });
   }
 });
 
@@ -47,10 +47,10 @@ router.get("/one-recipe/:id", auth, async (req, res) => {
     if (recipe[0].ownerId == req.user.userId) {
       res.json(recipe[0]);
     } else {
-      res.status(500).json({ message: "Private" });
+      res.status(500).json({ message: "Recipe is private" });
     }
   } catch (e) {
-    res.status(500).json({ message: "Ein Feler ist aufgetreten" });
+    res.status(500).json({ message: "Error" });
   }
 });
 
@@ -69,9 +69,9 @@ router.delete("/one-recipe-delete/:id", auth, async (req, res) => {
       }
     );
 
-    res.json({ message: "deleted" });
+    res.json({ message: "Recipe is deleted" });
   } catch (e) {
-    res.status(500).json({ message: "Ein Feler ist aufgetreten" });
+    res.status(500).json({ message: "Error" });
   }
 });
 
@@ -95,9 +95,9 @@ router.put("/one-recipe-update/:id", auth, async (req, res) => {
       } else {
       }
     });
-    res.json({ message: "Updated" });
+    res.json({ message: "Recipe is updated" });
   } catch (e) {
-    res.status(500).json({ message: "Ein Feler ist aufgetreten" });
+    res.status(500).json({ message: "Error" });
   }
 });
 
