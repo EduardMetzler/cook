@@ -58,4 +58,8 @@ export class RecipeCreateComponent implements OnInit {
     });
     this.ingredients.push(ingredientsForm);
   }
+
+  ingredientDelete(i: any) {
+    this.ingredients.removeAt(i);
+  }
 }

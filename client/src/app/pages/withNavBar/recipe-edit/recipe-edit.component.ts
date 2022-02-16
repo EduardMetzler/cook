@@ -62,7 +62,6 @@ export class RecipeEditComponent implements OnInit {
           name: oneRecipe.name,
           description: oneRecipe.description,
           private: true ? oneRecipe.private === 'true' : false,
-          // ingredients: oneRecipe.ingredients,
         });
       }
     });
@@ -79,5 +78,8 @@ export class RecipeEditComponent implements OnInit {
         this.route.snapshot.params['id']
       );
     }
+  }
+  ingredientDelete(i: any) {
+    this.ingredients.removeAt(i);
   }
 }

@@ -20,9 +20,14 @@ mat-radio-button {
 }
 
 .form-field {
-  width: 55px;
+  width: 60px;
 }
 
 .form-field-margin {
   margin-left: 15px;
+}
+
+.delete-btn {
+  margin-left: 5px;
+  margin-bottom: 17px;
 }
