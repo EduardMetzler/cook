@@ -23,13 +23,15 @@ router.get("/get-user-data", auth, async (req, res) => {
 
 router.post("/new-recipe-create", auth, async (req, res) => {
   try {
-    const { name, description, private } = req.body;
+    const { name, description, private, ingredients } = req.body;
+    console.log(req.body);
 
     const recipe = new Recipe0({
       ownerId: req.user.userId,
       name,
       description,
-      private
+      private,
+      ingredients,
     });
 
     await recipe.save();
@@ -77,15 +79,15 @@ router.delete("/one-recipe-delete/:id", auth, async (req, res) => {
 
 router.put("/one-recipe-update/:id", auth, async (req, res) => {
   try {
-    const { name, description,private } = req.body;
-    console.log(req.body)
+    const { name, description, private, ingredients } = req.body;
+    console.log(req.body);
 
     const recipe = await Recipe0.findById(req.params.id);
 
     recipe.name = name;
     recipe.description = description;
     recipe.private = private;
-
+    recipe.ingredients = ingredients;
 
     console.log(recipe);
 

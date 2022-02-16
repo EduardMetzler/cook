@@ -18,3 +18,11 @@ mat-radio-group {
 mat-radio-button {
   margin: 5px;
 }
+
+.form-field {
+  width: 55px;
+}
+
+.form-field-margin {
+  margin-left: 15px;
+}

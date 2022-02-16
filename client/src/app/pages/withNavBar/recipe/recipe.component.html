@@ -1,17 +1,29 @@
-
-<div fxLayoutAlign="center "  >
-    <div class="maim-div" fxFlex="100" fxFlex.gt-xs="50" *ngIf="oneRecipe$ |async as oneRecipe">
-    
- 
-            <h1 > {{oneRecipe.name}} </h1>
-            <div>{{oneRecipe.description}}</div>
-            <div>Private: {{oneRecipe.private}}</div>
-
-    
-   
-
+<div fxLayoutAlign="center ">
+  <div
+    class="maim-div"
+    fxFlex="100"
+    fxFlex.gt-xs="50"
+    *ngIf="oneRecipe$ | async as oneRecipe"
+  >
+    <h1>{{ oneRecipe.name }}</h1>
+    <h2>Ingredients</h2>
+    <div fxLayout="column">
+      <div
+        *ngFor="let ingredient of oneRecipe.ingredients"
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+      >
+        <div>{{ ingredient.ingredient }}</div>
+        <div>{{ ingredient.amount }} {{ ingredient.unit }}</div>
+      </div>
     </div>
- 
-  
-
+    <h2>Recipe text</h2>
+    <div>{{ oneRecipe.description }}</div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <h2>Status:</h2>
+      <p class="privateStyle">
+        {{ oneRecipe.private === "true" ? "Private" : "Public" }}
+      </p>
+    </div>
+  </div>
 </div>
