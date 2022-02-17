@@ -1,10 +1,17 @@
+<div fxLayoutAlign="center  ">
+    <mat-card fxFlex="100" fxFlex.gt-xs="50">
+        <a mat-raised-button color="primary" routerLink="/pecipe-create" class="button">Recipe Create</a>
 
-
-<div fxLayoutAlign="center  "     >
-    <mat-card  fxFlex="100" fxFlex.gt-xs="50">
-        <a  mat-raised-button color="primary" routerLink="/pecipe-create" class="button">Recipe Create</a>
-
-        <a  mat-raised-button color="primary" routerLink="/my-pecipes" class="button">My Recipes</a>
+        <a mat-raised-button color="primary" routerLink="/my-pecipes" class="button">My Recipes</a>
     </mat-card>
-  </div>
-  
+
+
+</div>
+
+<div fxLayoutAlign="center  ">
+    <mat-card fxFlex="100" fxFlex.gt-xs="50">
+        <input type="file" (change)="upload($event)" />
+    </mat-card>
+
+
+</div>

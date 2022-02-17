@@ -5,13 +5,15 @@ const cors = require("cors");
 
 const app = express();
 app.use(express.json({ extended: true }));
+app.use(express.static("images"))
 
-app.use(cors());
+app.use(cors())
 
 mongoose.set("useFindAndModify", false);
 
 app.use("/api", require("./routes/auth.routes"));
 app.use("/api/user", require("./routes/user.routes"));
+app.use("/api/files", require("./routes/files.routes"));
 
 
 const PORT = config.get("port") || 5000;

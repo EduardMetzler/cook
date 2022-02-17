@@ -15,6 +15,7 @@ router.get("/get-user-data", auth, async (req, res) => {
       persone: user[0].persone,
       role: user[0].role,
       recipesArray: recipesArray,
+      avatar :user[0].avatar
     });
   } catch (e) {
     res.status(500).json({ message: "Error" });

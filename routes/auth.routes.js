@@ -53,7 +53,8 @@ router.post(
         email,
         password: hashedPassword,
         persone: { firstName, lastName },
-        role:"user"
+        avatar:"https://curity.io/images/resources/guides/tech/guides-tech-angular-og.png",
+        role:"user",
       });
       const token = jwt.sign({ userId: user.id }, config.get("jwtSecter"), {
         expiresIn: "1h",
