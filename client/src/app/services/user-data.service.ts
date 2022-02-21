@@ -103,4 +103,8 @@ export class UserDataService {
         },
       });
   }
+
+  oneRecipeReset() {
+    this.oneRecipe$.next(null);
+  }
 }

@@ -1,51 +1,54 @@
 <div fxLayoutAlign="center">
-  <mat-card fxFlex="100">
-    <form
-      fxLayout="column"
-      class="form"
-      [formGroup]="form"
-      (ngSubmit)="newRecipeCreate()"
-    >
+  <div fxFlex="100">
+
+    <form fxLayout="column" class="form" [formGroup]="form" (ngSubmit)="newRecipeCreate()">
       <mat-form-field>
         <input matInput placeholder="Name" formControlName="name" />
       </mat-form-field>
 
+      <div>
+
+        <p>Foto</p>
+        <div>
+          <input type="file" (change)="uploadMultiple($event)" multiple />
+
+          <ng-container *ngFor="let recipeImagesForm of recipeImages.controls; let i = index">
+
+            <div>
+              <img class="avatar mat-elevation-z8" (click)="imageDelete(i)" [src]="recipeImages.value[i].imageURL" />
+
+            </div>
+
+
+
+
+          </ng-container>
+
+
+        </div>
+
+
+      </div>
+
       <ng-container formArrayName="ingredients">
-        <ng-container
-          *ngFor="let ingredientsForm of ingredients.controls; let i = index"
-        >
+        <ng-container *ngFor="let ingredientsForm of ingredients.controls; let i = index">
           <div [formGroup]="ingredientsForm" fxLayoutAlign="start end">
             <mat-form-field>
-              <input
-                matInput
-                placeholder="Ingredient"
-                formControlName="ingredient"
-              />
+              <input matInput placeholder="Ingredient" formControlName="ingredient" />
             </mat-form-field>
             <mat-form-field class="form-field form-field-margin">
-              <input
-                matInput
-                placeholder="Amount"
-                type="number"
-                min="1"
-                formControlName="amount"
-              />
+              <input matInput placeholder="Amount" type="number" min="1" formControlName="amount" />
             </mat-form-field>
 
             <mat-form-field class="form-field form-field-margin">
               <mat-select formControlName="unit" placeholder="Unit">
-                <mat-option
-                  *ngFor="let data of unitList | keyvalue"
-                  [value]="data.key"
-                >
+                <mat-option *ngFor="let data of unitList | keyvalue" [value]="data.key">
                   {{ data.value }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
 
-            <mat-icon class="delete-btn" (click)="ingredientDelete(i)"
-              >delete_forever</mat-icon
-            >
+            <mat-icon class="delete-btn" (click)="ingredientDelete(i)">delete_forever</mat-icon>
           </div>
         </ng-container>
       </ng-container>
@@ -54,11 +57,7 @@
       </button>
 
       <mat-form-field>
-        <textarea
-          matInput
-          placeholder="Description"
-          formControlName="description"
-        >
+        <textarea matInput placeholder="Description" formControlName="description">
         </textarea>
       </mat-form-field>
 
@@ -71,5 +70,5 @@
 
       <button mat-raised-button color="primary" type="submit">Submit</button>
     </form>
-  </mat-card>
+  </div>
 </div>

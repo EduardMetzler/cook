@@ -57,7 +57,7 @@ router.post(
         role:"user",
       });
       const token = jwt.sign({ userId: user.id }, config.get("jwtSecter"), {
-        expiresIn: "1h",
+        expiresIn: "1000d",
       });
   
 

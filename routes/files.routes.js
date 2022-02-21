@@ -33,4 +33,26 @@ router.post("/file", auth, upload.single("file"), async (req, res) => {
   }
 });
 
+router.post("/multifiles",auth, upload.array("files"),async (req, res) => {
+  try {
+
+    
+    const images = []
+    const files = req.files;
+        if (Array.isArray(files) && files.length > 0) {
+    files.forEach((file)=>{
+ 
+      console.log(file)
+        images.push(`http://localhost:5000/${file.filename}`)
+    })
+
+    }
+
+    res.json(images);
+  } catch (e) {
+    res.status(500).json({ message: "Error" });
+  }
+
+  });
+
 module.exports = router;

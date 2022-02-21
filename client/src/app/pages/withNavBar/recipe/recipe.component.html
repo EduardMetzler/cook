@@ -1,18 +1,22 @@
 <div fxLayoutAlign="center ">
-  <div
-    class="maim-div"
-    fxFlex="100"
-    fxFlex.gt-xs="50"
-    *ngIf="oneRecipe$ | async as oneRecipe"
-  >
+  <div class="maim-div" fxFlex="100" fxFlex.gt-xs="50" *ngIf="oneRecipe$ | async as oneRecipe">
     <h1>{{ oneRecipe.name }}</h1>
+
+
+
+    <div fxLayout="column">
+      <div *ngFor="let recipeImage of oneRecipe.recipeImages; let i = index" fxLayout="row"
+        fxLayoutAlign="space-between center">
+
+        <img class="avatar mat-elevation-z8" [src]="recipeImage.imageURL" />
+      </div>
+    </div>
+
+
+
     <h2>Ingredients</h2>
     <div fxLayout="column">
-      <div
-        *ngFor="let ingredient of oneRecipe.ingredients"
-        fxLayout="row"
-        fxLayoutAlign="space-between center"
-      >
+      <div *ngFor="let ingredient of oneRecipe.ingredients" fxLayout="row" fxLayoutAlign="space-between center">
         <div>{{ ingredient.ingredient }}</div>
         <div>{{ ingredient.amount }} {{ ingredient.unit }}</div>
       </div>
