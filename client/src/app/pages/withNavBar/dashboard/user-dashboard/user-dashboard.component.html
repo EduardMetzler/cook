@@ -1,17 +1,32 @@
-<div fxLayoutAlign="center  ">
-    <mat-card fxFlex="100" fxFlex.gt-xs="50">
-        <a mat-raised-button color="primary" routerLink="/pecipe-create" class="button">Recipe Create</a>
+<div *ngIf="user$ | async as user">
+  <div fxLayoutAlign="center  ">
+    <mat-card fxFlex="100" fxLayout="column" fxLayoutAlign="start center">
+      <div class=""><img class="" [src]="user.avatar" /></div>
 
-        <a mat-raised-button color="primary" routerLink="/my-pecipes" class="button">My Recipes</a>
+      <div><input type="file" (change)="upload($event)" /></div>
     </mat-card>
-
-
-</div>
-
-<div fxLayoutAlign="center  ">
-    <mat-card fxFlex="100" fxFlex.gt-xs="50">
-        <input type="file" (change)="upload($event)" />
+    <mat-card fxFlex="100">
+      <p>My Recipe Amount: {{ myRecipeAmount }}</p>
     </mat-card>
+  </div>
 
+  <div fxLayoutAlign="center  ">
+    <mat-card fxFlex="100" fxFlex.gt-xs="50">
+      <a
+        mat-raised-button
+        color="primary"
+        routerLink="/pecipe-create"
+        class="button"
+        >Recipe Create</a
+      >
 
+      <a
+        mat-raised-button
+        color="primary"
+        routerLink="/my-pecipes"
+        class="button"
+        >My Recipes</a
+      >
+    </mat-card>
+  </div>
 </div>

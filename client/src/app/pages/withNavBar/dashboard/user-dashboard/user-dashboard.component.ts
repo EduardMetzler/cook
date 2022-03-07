@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { FilesService } from 'src/app/services/files.service';
+import { UserDataService } from 'src/app/services/user-data.service';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -7,7 +9,19 @@ import { FilesService } from 'src/app/services/files.service';
   styleUrls: ['./user-dashboard.component.css'],
 })
 export class UserDashboardComponent implements OnInit {
-  constructor(private fileService: FilesService) {}
+  myRecipeAmount = 0;
+
+  user$ = this.userDataService.user$.pipe(
+    map((userData) => {
+      this.myRecipeAmount = userData.recipesArray.length;
+      return userData;
+    })
+  );
+
+  constructor(
+    private fileService: FilesService,
+    private userDataService: UserDataService
+  ) {}
 
   ngOnInit(): void {}
 
